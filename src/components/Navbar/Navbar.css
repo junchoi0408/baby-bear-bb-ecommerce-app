@@ -1,0 +1,104 @@
+
+.navbar__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* align-items: center; */
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.1em;
+}
+
+.nav__item {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.nav__show {
+    display:none
+}
+
+.icon__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nav__person, .nav__search, .nav__cart {
+    margin: 0 1em;
+}
+
+.nav__person, .nav__search {
+    display: none;
+}
+
+.nav__menu{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    padding: 3rem 1.5rem 0;
+    background: #1f2021;
+    backdrop-filter: blur(10px);
+    transition: 1s;
+    overflow: auto;
+    color: #ffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav__menu li {
+    font-family: 'Arapey', serif;
+    font-style: normal;
+}
+
+.show {
+    left: 0;
+}
+
+.nav__home__menu, .nav__product__menu, .nav__news__menu {
+    font-size: 22px;
+    margin-bottom: 1em;
+}
+
+.nav__login, .nav__create {
+    margin-bottom: 0.5em;
+    color: #BFBFBF;
+}
+
+@media screen and (min-width: 1024px) {
+    .menu {
+        display:none;
+    }
+
+    .nav__show {
+        display: block;
+    }
+
+    .nav__list { 
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 570px;
+        align-items: center;
+        font-size: 14px;
+    }
+
+    .logo {
+        font-size: 25px;
+    } 
+
+    .nav__person, .nav__search {
+        display: block;
+    }    
+
+    .nav__menu{
+        width: 40%;
+    }
+}
