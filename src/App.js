@@ -1,19 +1,29 @@
 import './App.css';
-import { Navbar, Home } from './components';
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { Navbar, Home, Products, News, Auth } from './components';
 
 function App() {
   return (
-    <div className="App">
-      <header>
-        <div className="announcement">
-          <span>FREE SHIPPING ON PURCHASES OVER $75.00</span>
-        </div>
-        <Navbar />
-      </header>
-      <main>
-        <Home />
-      </main>
-    </div>
+    <>
+      <Router>
+            <Navbar />
+            <Switch>
+                <Route exact path="/">
+                    <Home />
+                </Route>
+                <Route exact path="/products">
+                    <Products />
+                </Route>
+                <Route exact path="/news">
+                    <News />
+                </Route>
+                <Route exact path="/auth">
+                    <Auth />
+                </Route>
+            </Switch>
+        </Router>
+    </>
+    
   );
 }
 

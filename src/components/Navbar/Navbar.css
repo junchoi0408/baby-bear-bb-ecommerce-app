@@ -1,3 +1,13 @@
+.announcement {
+    text-align: center;
+    background: #ffdbe9;
+    padding: 13.5px 30px;
+}
+
+.MuiBadge-colorPrimary {
+    color: #fff;
+    background-color: #ffdbe9 !important;
+}
 
 .navbar__container {
     display: flex;
@@ -32,6 +42,7 @@
 
 .nav__person, .nav__search, .nav__cart {
     margin: 0 1em;
+    align-self: center;
 }
 
 .nav__person, .nav__search {
@@ -71,6 +82,12 @@
 .nav__login, .nav__create {
     margin-bottom: 0.5em;
     color: #BFBFBF;
+}
+
+.menu {
+    width: 80px;
+    text-align: center;
+    padding: 10px 0;
 }
 
 @media screen and (min-width: 1024px) {
