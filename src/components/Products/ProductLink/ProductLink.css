@@ -1,0 +1,73 @@
+.radio-toolbar {
+    margin: 10px;
+}
+  
+.radio-toolbar input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+  
+.radio-toolbar label {
+    display: inline-block;
+    padding: 9px 11px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    margin: 3px 4px 7px 3px;
+    cursor: pointer;
+    font-weight: 700;
+}
+  
+.radio-toolbar input[type="radio"]:focus + label {
+    border: 1px solid #000;
+}
+  
+.radio-toolbar input[type="radio"]:checked + label {
+    border: 1px solid #000;
+}
+
+.btn__addToCart {
+    width: 315px;
+    padding: 12px 30px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+    border: 1px solid #000;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    margin-top: 1em;
+}
+
+.btn__buyItNow {
+    width: 315px;
+    padding: 12px 30px;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffff;
+    background-color: #1F2021;
+    border: 1px solid #000;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    margin-top: 0.5em;
+    margin-bottom: 4em;
+}
+
+.productLink__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 315px;
+}
+
+.productlink__form__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.productlink__recommendation__container {
+    margin-top: 4em;
+}

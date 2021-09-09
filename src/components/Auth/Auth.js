@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { authService, firebaseInstance } from "../../firebase";
 import { Link, useHistory } from "react-router-dom";
+import { getAuth, signInWithRedirect, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
 import './Auth.css';
 import { TextField } from "@material-ui/core"
 import { FcGoogle } from "react-icons/fc";
@@ -27,23 +27,22 @@ const Auth = () => {
         } else {
             setDisable(true);
         }
-
     }
     
     const onSubmit = async(event) => {
         event.preventDefault();
+        let auth = getAuth();
         try {
             let data;
             if(newAccount){
-                data = await authService.createUserWithEmailAndPassword(email, password)
+                data = await createUserWithEmailAndPassword(auth, email, password)
             } else {
-                data = await authService.signInWithEmailAndPassword(email, password)
+                data = await signInWithEmailAndPassword(auth, email, password)
             }
             console.log(data)
         } catch (error) {
             setError(error.message)
         }
-        history.pushState('/')
     }
 
     const toggleAccount = () => {
@@ -51,17 +50,23 @@ const Auth = () => {
     }
 
     const onSocialClick = async (event) => {
-        const {target:{name}} = event;
+        let {target:{name}} = event;
+        const auth = getAuth();
         let provider;
         if(name === "google") {
-            provider = new firebaseInstance.auth.GoogleAuthProvider();
+            provider = new GoogleAuthProvider();
         } else if (name === "facebook") {
-            provider = new firebaseInstance.auth.FacebookAuthProvider();
+            provider = new FacebookAuthProvider();
         } 
         else if(name === "github") {
-            provider = new firebaseInstance.auth.GithubAuthProvider();
+            provider = new GithubAuthProvider();
         }
-        await authService.signInWithPopup(provider);
+        await signInWithPopup(auth, provider).then(res=>{
+
+        }).catch(err=>{
+            console.log(error)
+        });
+
     }
 
     return (
@@ -72,8 +77,8 @@ const Auth = () => {
             <hr className="hr--small"/>
             <div className="login__container">
                 <form onSubmit={onSubmit} className="form__container">
-                    <TextField InputLabelProps={{style: {fontSize: 12, fontFamily: 'Arapey, sans-serif'}}} className="form__input"label="Email Address" name="email" type="text" placeholder="Email" value={email} onChange={onChange} required/>
-                    <TextField InputLabelProps={{style: {fontSize: 12, fontFamily: 'Arapey, sans-serif'}}} className="form__input"label="Password" name="password" type="password" placeholder="Password" value={password} onChange={onChange} required />
+                    <TextField InputLabelProps={{style: {fontSize: 12, fontFamily: 'Arapey, sans-serif'}}} className="form__input" label="Email Address" name="email" type="text" placeholder="Email" value={email} onChange={onChange} required/>
+                    <TextField InputLabelProps={{style: {fontSize: 12, fontFamily: 'Arapey, sans-serif'}}} className="form__input" label="Password" name="password" type="password" placeholder="Password" value={password} onChange={onChange} required />
                     <input onChange={onChange} disabled={disable} className="submit__input" type="submit" value={newAccount ? "CREATE ACCOUNT" : "SIGN IN"} />
                 </form>
                 
@@ -84,9 +89,9 @@ const Auth = () => {
                 </div>
 
                 <div className="social__auth__container">
-                    <button className="social__button" onClick={onSocialClick} name="google"><FcGoogle size={18} className="button__logo"/><span>Continue with Google</span></button>
-                    <button className="social__button" onClick={onSocialClick} name="facebook"><FaFacebook style={{ color: "#3b5998" }} size={18} className="button__logo"/><span>Continue with Facebook</span></button>
-                    <button className="social__button" onClick={onSocialClick} name="github"><FaGithub style={{ color: "#171515" }} size={18} className="button__logo"/><span>Continue with Github</span></button>
+                    <button className="social__button" onClick={onSocialClick} name="google"><FcGoogle className="button__logo" size={18}/>Continue with Google</button>
+                    <button className="social__button" onClick={onSocialClick} name="facebook"><FaFacebook className="button__logo" style={{ color: "#3b5998" }} size={18} />Continue with Facebook</button>
+                    <button className="social__button" onClick={onSocialClick} name="github"><FaGithub className="button__logo" style={{ color: "#171515" }} size={18} />Continue with Github</button>
                 </div>
             
                 <div className="toggle__sign">
@@ -98,9 +103,7 @@ const Auth = () => {
             <span className="security">
                 Secure Login with reCAPTCHA subject to Google <a href="https://policies.google.com/terms?hl=en">Terms</a> & <a href="https://policies.google.com/privacy?hl=en">Privacy</a>
             </span>
-
-            <hr className="hr--large"/>
-
+            {error}
         </div>
     )
 }

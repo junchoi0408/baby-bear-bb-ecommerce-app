@@ -30,10 +30,17 @@
     margin-top: 0.5rem;
     cursor: pointer;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     border-width: thin;
     font-family: 'Arapey', sans-serif;
     font-size: 16px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.button__logo {
+    margin-right: 5.5rem;
 }
 
 .form__container {
@@ -71,6 +78,10 @@
     background-color: rgb(49, 49, 49);
     color: #ffff;
     cursor: pointer;
+}
+
+input[type="text" i], input[type="password" i] {
+    font-family: 'Arapey', sans-serif;
 }
 
 .submit__input[disabled]{
@@ -145,6 +156,11 @@ button span {
 }
 
 @media screen and (min-width: 774px) {
+    .button__logo {
+        margin-right: 4rem;
+        margin-left: 1rem;
+    }
+    
     .auth__container {
         padding-top: 80px;
     }
@@ -192,5 +208,11 @@ button span {
 
     .security {
         margin: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .form__container, .divider, .login__container, .social__auth__container { 
+        width: 330px;
     }
 }
