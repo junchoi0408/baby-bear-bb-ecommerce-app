@@ -51,7 +51,7 @@ const Nav = ({ isLoggedIn }) => {
                     </ul>
                 </ul>      
             </nav>
-            <ul className={toggle ? "nav__menu show" : "nav__menu"}>
+            <ul className={toggle ? "nav__menu show" : "nav__menu"} onClick={handleMenuClick}>
                 <Close style={{alignSelf: 'flex-end', cursor:'pointer'}} onClick={handleMenuClick}/>
                 <li className="nav__home__menu"><Link to='/'>Home</Link></li>
                 <li className="nav__product__menu"><Link to='/products'>Products</Link></li>

@@ -16,7 +16,7 @@ const Product = ({ product, handleProductLinkClick, getProduct }) => {
                         <img src={product.media.source} alt={product.name} />
                     </div>
                 </Link>          
-                <span>{product.name} - <b style={{ fontSize: '14px', fontFamily: 'Montserrat, sans-seriif', letterSpacing: '0.1em'}}>{product.price.formatted_with_symbol}</b></span>
+                <span style={{width: '345px', textAlign: 'center'}}>{product.name} - <b style={{ fontSize: '14px', fontFamily: 'Montserrat, sans-seriif', letterSpacing: '0.1em'}}>{product.price.formatted_with_symbol}</b></span>
             </div>
             : 
             <div>

@@ -74,3 +74,34 @@
 .productlink__recommendation__container {
     margin-top: 4em;
 }
+
+.product__description { 
+    width: 315px;
+}
+
+@media screen and (min-width: 768px) {
+    .productLink {
+        display: flex;
+        justify-content: center;
+        padding: 2em;
+    }
+    
+    .productLink__img__container {
+        max-width: 565px;
+        margin-top: 2em;
+    }
+
+    .productLink__img__container img {
+        margin-bottom: 0.5em;
+    }
+    
+    .productLink__container {
+        width: 450px;
+        padding: 0 45px 0 25px;
+        margin: 0;
+        align-self: flex-start;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+    }
+}
