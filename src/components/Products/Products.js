@@ -15,6 +15,7 @@ const Products = ({ products, handleProductLinkClick, getProduct }) => {
                         return <Product key={product.id} getProduct={getProduct} product={product} handleProductLinkClick={handleProductLinkClick}/>
                     })
                 }
+
             </div>
         </>
     )

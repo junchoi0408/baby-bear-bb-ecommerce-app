@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
 import './Navbar.css';
 
-const Nav = () => {
+const Nav = ({ isLoggedIn }) => {
     const location = useLocation();
 
     const [toggle, setToggle] = useState(false);
@@ -16,7 +16,7 @@ const Nav = () => {
 
     return (
         <header>
-            {location.pathname === '/' &&
+            { location.pathname === '/' &&
                 <div className="announcement">
                     <span>FREE SHIPPING ON PURCHASES OVER $75.00</span>
                 </div>
@@ -32,7 +32,7 @@ const Nav = () => {
                     <li className="nav__news"><Link to='/news' className="nav__item nav__show">News</Link></li>
                     <ul className="icon__container">
                         <li className="nav__person">
-                            <IconButton component={Link} to="/auth" aria-label="Show profile" color="inherit">
+                            <IconButton component={Link} to={!isLoggedIn ? "/auth" : "/profile"} aria-label="Show profile" color="inherit">
                                 <Person className="nav__item nav__show"/>
                             </IconButton>
                         </li>     
@@ -52,12 +52,18 @@ const Nav = () => {
                 </ul>      
             </nav>
             <ul className={toggle ? "nav__menu show" : "nav__menu"}>
-                <Close style={{alignSelf: 'flex-end'}} onClick={handleMenuClick}/>
+                <Close style={{alignSelf: 'flex-end', cursor:'pointer'}} onClick={handleMenuClick}/>
                 <li className="nav__home__menu"><Link to='/'>Home</Link></li>
                 <li className="nav__product__menu"><Link to='/products'>Products</Link></li>
                 <li className="nav__news__menu"><Link to='/news'>News</Link></li>
-                <li className="nav__login"><Link to='/auth'>Log in</Link></li>
-                <li className="nav__create"><Link to='/auth'>Create Account</Link></li>
+            {   !isLoggedIn ? 
+                <>
+                    <li className="nav__login"><Link to='/auth'>Log in</Link></li>
+                    <li className="nav__create"><Link to='/auth'>Create Account</Link></li>
+                </>
+                :
+                <li className="nav__login"><Link to='/profile'>Profile</Link></li>
+            }
             </ul>
         </header>
     )

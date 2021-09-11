@@ -12,7 +12,7 @@ const Auth = () => {
     const [newAccount, setNewAccount] = useState(false);
     const [error, setError] = useState("");
     const [disable, setDisable] = useState(true);
-    const history = useHistory();
+    const history = useHistory(); 
 
     const onChange = (event) => {
         const {target: {name, value}} = event;
@@ -40,6 +40,7 @@ const Auth = () => {
                 data = await signInWithEmailAndPassword(auth, email, password)
             }
             console.log(data)
+            history.push('/')
         } catch (error) {
             setError(error.message)
         }
@@ -62,11 +63,10 @@ const Auth = () => {
             provider = new GithubAuthProvider();
         }
         await signInWithPopup(auth, provider).then(res=>{
-
+            history.push("/")
         }).catch(err=>{
             console.log(error)
         });
-
     }
 
     return (

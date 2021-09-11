@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ProductLink.css';
 
 const ProductLink = ({ product }) => {
-
+    console.log(product)
     return (
         <>
             <div>
@@ -17,14 +17,14 @@ const ProductLink = ({ product }) => {
                 <hr className="hr--small"/>
                 <form className="productlink__form__container">
                     <span>Color</span>
-                    <div class="radio-toolbar">
+                    <div className="radio-toolbar">
                         <input type="radio" id="radioWhite" name="radioColor" value="white" defaultChecked/>
                         <label for="radioWhite">WHITE</label>
                         <input type="radio" id="radioBlack" name="radioColor" value="black"/>
                         <label for="radioBlack">BLACK</label> 
                     </div>
                     <span>Size</span>
-                    <div class="radio-toolbar">
+                    <div className="radio-toolbar">
                         <input type="radio" id="radio90" name="radioSize" value="90" defaultChecked/>
                         <label for="radio90">90</label>
                         <input type="radio" id="radio100" name="radioSize" value="100" />
@@ -45,7 +45,7 @@ const ProductLink = ({ product }) => {
                 <div className="productlink__recommendation__container">
                     <h2>You may also like</h2>
                 </div>
-                {console.log(product)}
+             
             </div>
         </>
     )

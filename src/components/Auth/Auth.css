@@ -4,7 +4,6 @@
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
-    margin-top: 2em;
     justify-content: center;
 }
 
@@ -148,21 +147,26 @@ button span {
     width: 50px;
 }
 
-.hr--small {
+.hr--small, .hr--small-top {
     margin: 15px auto;
     border-top: solid #000;
     border-width: 1px 0 0;
     width: 50px;
 }
 
-@media screen and (min-width: 774px) {
+@media screen and (min-width: 768px) {
     .button__logo {
         margin-right: 4rem;
         margin-left: 1rem;
     }
     
+    .page__container {
+        margin-top: 4em;
+    }
+
     .auth__container {
         padding-top: 80px;
+        margin-top: 2em;
     }
     
     .login__container {

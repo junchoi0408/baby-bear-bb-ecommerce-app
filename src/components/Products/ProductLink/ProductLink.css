@@ -36,6 +36,7 @@
     font-size: 13px;
     letter-spacing: 0.1em;
     margin-top: 1em;
+    cursor: pointer;
 }
 
 .btn__buyItNow {
@@ -50,6 +51,7 @@
     letter-spacing: 0.1em;
     margin-top: 0.5em;
     margin-bottom: 4em;
+    cursor: pointer;
 }
 
 .productLink__container {
