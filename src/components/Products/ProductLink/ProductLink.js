@@ -16,24 +16,26 @@ const ProductLink = ({ product }) => {
                 <span style={{fontFamily: 'Arapey, serif', marginBottom: '1em'}}>Tax included. <a style={{color: '#FFB7C5', textDecoration: 'underline'}}>Shipping</a> calculated at checkout.</span>
                 <hr className="hr--small"/>
                 <form className="productlink__form__container">
-                    <span>Color</span>
-                    <div className="radio-toolbar">
-                        <input type="radio" id="radioWhite" name="radioColor" value="white" defaultChecked/>
-                        <label for="radioWhite">WHITE</label>
-                        <input type="radio" id="radioBlack" name="radioColor" value="black"/>
-                        <label for="radioBlack">BLACK</label> 
-                    </div>
-                    <span>Size</span>
-                    <div className="radio-toolbar">
-                        <input type="radio" id="radio90" name="radioSize" value="90" defaultChecked/>
-                        <label for="radio90">90</label>
-                        <input type="radio" id="radio100" name="radioSize" value="100" />
-                        <label for="radio100">100</label> 
-                        <input type="radio" id="radio110" name="radioSize" value="110" />
-                        <label for="radio110">110</label>
-                        <input type="radio" id="radio120" name="radioSize" value="120" />
-                        <label for="radio120">120</label> 
-                    </div>
+                    { product.variant_groups.map((variant) => {
+                        return (
+                            <>
+                                <span>{variant.name}</span>
+                                <div className="radio-toolbar">
+                                    { variant.options.map((option, index) => {
+                                        return (
+                                            <>
+                                                <input type="radio" id={`radio${option.name}`} name={`radio${variant.name}`} value={`${option.name}`} defaultChecked={index === 0}/>
+                                                <label for={`radio${option.name}`}>{option.name}</label>
+                                            </>
+                                        )
+                                    }
+                                        
+                                    )}
+                                </div>
+                            </>
+                        )
+                    })}
+
                     <button className="btn__addToCart">ADD TO CART</button>
                     <button className="btn__buyItNow">BUY IT NOW</button>
                 </form>
