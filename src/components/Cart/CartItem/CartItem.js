@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-const CartItem = ({ item, handleRemoveFromCart }) => {
-    console.log(item);
+const CartItem = ({ item, handleRemoveFromCart, handleUpdateCartQty }) => {
+
+    const [quantity, setQuantity] = useState(item.quantity);
+    const [variantData, setVariantData] = useState({});
+
+    useEffect(()=>{
+        item.selected_options.map(variant=> {
+            variantData[variant.group_id] = variant.option_id;
+        })
+    }, [])
+
+    const handleChange = (e) => {
+        setQuantity(e.target.value)
+    }
 
     return (
         <div className="cart">
@@ -14,9 +26,12 @@ const CartItem = ({ item, handleRemoveFromCart }) => {
                 </div>
 
             </div>
-            <div className="cart__item__price" style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-                <input type="number" placeholder={item.quantity} style={{marginRight:'3em', width: '80px', height: '43px', textAlign: 'center', fontSize: '16px', fontWeight: 600}}/>
-                <span style={{marginLeft: '3em'}}>{item.line_total.formatted_with_symbol}</span>
+            <div className="cart__item__price" >
+                <form method="post" onSubmit={() => handleUpdateCartQty(item.id, quantity, variantData)} style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+                    <input id="quantity" type="number" value={quantity} onChange={handleChange} style={{marginRight:'3em', width: '80px', height: '43px', textAlign: 'center', fontSize: '16px', fontWeight: 600}}/>
+                    <span style={{marginLeft: '3em'}}>{item.line_total.formatted_with_symbol}</span>
+                </form>
+                
             </div>
         </div>
     )

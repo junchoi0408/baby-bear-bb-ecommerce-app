@@ -16,6 +16,7 @@ function App() {
     const [productLink, setProductLink] = useState([]);
     const [product, setProduct] = useState({});
     const [cart, setCart] = useState({});
+    const [variant, setVariant] = useState({})
 
     useEffect(() => {
         init();
@@ -54,7 +55,7 @@ function App() {
     }
   
     const fetchCart = async () => {
-        setIsLoading(true)
+        setIsLoading(true);
         setCart(await commerce.cart.retrieve());
         setIsLoading(false);
     }
@@ -65,11 +66,32 @@ function App() {
     }
 
     const handleRemoveFromCart = async (productId) => {
-        setIsLoading(true)
+        setIsLoading(true);
         const { cart } = await commerce.cart.remove(productId);
         setCart(cart);
         setIsLoading(false);
     }
+
+    const handleEmptyCart = async () => {
+        setIsLoading(true);
+        const { cart } = await commerce.cart.empty();
+        setCart(cart);
+        setIsLoading(false);
+    }
+
+    const handleUpdateCartQty = async (productId, quantity, variant) => {
+        setIsLoading(true);
+        
+        if (!quantity) {
+            quantity = 0;
+        }
+
+        const { cart } = await commerce.cart.update(productId, { quantity }, variant);
+
+        setCart(cart);
+        setIsLoading(false);
+    }
+
 
     return (
       <>
@@ -87,7 +109,7 @@ function App() {
                         <News />
                     </Route>
                     <Router exact path="/cart">
-                        <Cart cart={cart} handleRemoveFromCart={handleRemoveFromCart}/>
+                        <Cart handleUpdateCartQty={handleUpdateCartQty} handleEmptyCart={handleEmptyCart} cart={cart} handleRemoveFromCart={handleRemoveFromCart}/>
                     </Router>
                     {  isLoggedIn ?  
                     <Router exact path="/profile">
@@ -114,7 +136,6 @@ function App() {
                     <div style={{display: 'flex',justifyContent:'center', alignItems:'center', height: '100vh'}}>
                         <CircularProgress />
                     </div>
-                    
                 </>
             }
       </>
