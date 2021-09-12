@@ -15,7 +15,8 @@ function App() {
     const [products, setProducts] = useState([]);
     const [productLink, setProductLink] = useState([]);
     const [product, setProduct] = useState({});
-    
+    const [cart, setCart] = useState({});
+
     useEffect(() => {
         init();
         const auth = getAuth(firebaseApp);
@@ -28,6 +29,11 @@ function App() {
         })
         setIsLoading(false);
     }, [])
+
+    useEffect(()=>{
+        fetchProducts();
+        fetchCart();
+    },[])
 
     const init = async () => {
         const firebase = await initializeApp(firebaseConfig);
@@ -47,16 +53,29 @@ function App() {
         setProducts(data);
     }
   
+    const fetchCart = async () => {
+        setIsLoading(true)
+        setCart(await commerce.cart.retrieve());
+        setIsLoading(false);
+    }
 
-    useEffect(()=>{
-        fetchProducts();
-    },[])
+    const handleAddToCart = async (productId, quantity, variantData) => {
+        const { cart } = await commerce.cart.add(productId, quantity, variantData);
+        setCart(cart);
+    }
+
+    const handleRemoveFromCart = async (productId) => {
+        setIsLoading(true)
+        const { cart } = await commerce.cart.remove(productId);
+        setCart(cart);
+        setIsLoading(false);
+    }
 
     return (
       <>
         {  !isLoading && init ? 
             <Router>
-                <Navbar isLoggedIn={isLoggedIn}/>
+                <Navbar isLoggedIn={isLoggedIn} totalItems={cart.total_items}/>
                 <Switch>
                     <Route exact path="/">
                         <Home />
@@ -68,9 +87,9 @@ function App() {
                         <News />
                     </Route>
                     <Router exact path="/cart">
-                        <Cart />
+                        <Cart cart={cart} handleRemoveFromCart={handleRemoveFromCart}/>
                     </Router>
-                    {   isLoggedIn ?  
+                    {  isLoggedIn ?  
                     <Router exact path="/profile">
                         <Profile />
                     </Router>
@@ -79,7 +98,7 @@ function App() {
                         <Auth />
                     </Route>}
                     <Router exact path={`/${productLink}`}>
-                        <ProductLink product={product}/> 
+                        <ProductLink product={product} handleAddToCart={handleAddToCart}/> 
                     </Router>
                     <Redirect from={`${productLink}`} to="/products" />
                 </Switch>
@@ -88,14 +107,15 @@ function App() {
                         <hr className="hr--large" />
                         <span>Copyright &copy;{new Date().getFullYear()}, BabyBear BB </span>
                     </div>
-                    
                 </footer>
-            </Router>
+                </Router>
                 :
-                <div style={{display: 'flex',justifyContent:'center', alignItems:'center', height: '100vh'}}>
-                    <CircularProgress />
-                </div>
-                
+                <>
+                    <div style={{display: 'flex',justifyContent:'center', alignItems:'center', height: '100vh'}}>
+                        <CircularProgress />
+                    </div>
+                    
+                </>
             }
       </>
       

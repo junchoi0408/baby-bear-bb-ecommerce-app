@@ -1,21 +1,22 @@
 import React from 'react'
-import babyImg from '../../../assets/baby_bunny_snow_coat.jpg'
 
-const CartItem = () => {
+const CartItem = ({ item, handleRemoveFromCart }) => {
+    console.log(item);
+
     return (
         <div className="cart">
             <div className="cart__product">
-                <img src={babyImg} alt="product img" />
+                <img src={item.variant.assets[0].url} alt={item.name} />
                 <div className="cart__product__description">
-                    <h4>BABY BUNNY SNOW COAT</h4>
-                    <span>Pink / 70 (0-12 M)</span>
-                    <p>Remove</p>
+                    <h4>{item.name}</h4>
+                    <span>{item.selected_options[0].option_name} / {item.selected_options[1].option_name}</span>
+                    <p style={{cursor: 'pointer'}} onClick={() => handleRemoveFromCart(item.id)}>Remove</p>
                 </div>
 
             </div>
             <div className="cart__item__price" style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-                <input type="number" placeholder="1" style={{marginRight:'3em', width: '80px', height: '43px', textAlign: 'center', fontSize: '16px', fontWeight: 600}}/>
-                <span style={{marginLeft: '3em'}}>$47.98</span>
+                <input type="number" placeholder={item.quantity} style={{marginRight:'3em', width: '80px', height: '43px', textAlign: 'center', fontSize: '16px', fontWeight: 600}}/>
+                <span style={{marginLeft: '3em'}}>{item.line_total.formatted_with_symbol}</span>
             </div>
         </div>
     )

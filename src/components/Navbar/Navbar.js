@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom'
 import './Navbar.css';
 
-const Nav = ({ isLoggedIn }) => {
+const Nav = ({ isLoggedIn, totalItems }) => {
     const location = useLocation();
 
     const [toggle, setToggle] = useState(false);
@@ -43,7 +43,7 @@ const Nav = ({ isLoggedIn }) => {
                         </li>
                         <li className="nav__cart">
                             <IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
-                                <Badge badgeContent={1} color="primary">
+                                <Badge badgeContent={totalItems} color="primary">
                                     <ShoppingCart />
                                 </Badge>
                             </IconButton>
@@ -51,18 +51,18 @@ const Nav = ({ isLoggedIn }) => {
                     </ul>
                 </ul>      
             </nav>
-            <ul className={toggle ? "nav__menu show" : "nav__menu"} onClick={handleMenuClick}>
+            <ul className={toggle ? "nav__menu show" : "nav__menu"}>
                 <Close style={{alignSelf: 'flex-end', cursor:'pointer'}} onClick={handleMenuClick}/>
-                <li className="nav__home__menu"><Link to='/'>Home</Link></li>
-                <li className="nav__product__menu"><Link to='/products'>Products</Link></li>
-                <li className="nav__news__menu"><Link to='/news'>News</Link></li>
+                <li className="nav__home__menu" onClick={handleMenuClick}><Link to='/'>Home</Link></li>
+                <li className="nav__product__menu" onClick={handleMenuClick}><Link to='/products'>Products</Link></li>
+                <li className="nav__news__menu" onClick={handleMenuClick}><Link to='/news'>News</Link></li>
             {   !isLoggedIn ? 
                 <>
-                    <li className="nav__login"><Link to='/auth'>Log in</Link></li>
-                    <li className="nav__create"><Link to='/auth'>Create Account</Link></li>
+                    <li className="nav__login" onClick={handleMenuClick}><Link to='/auth'>Log in</Link></li>
+                    <li className="nav__create" onClick={handleMenuClick}><Link to='/auth'>Create Account</Link></li>
                 </>
                 :
-                <li className="nav__login"><Link to='/profile'>Profile</Link></li>
+                <li className="nav__login" onClick={handleMenuClick}><Link to='/profile'>Profile</Link></li>
             }
             </ul>
         </header>

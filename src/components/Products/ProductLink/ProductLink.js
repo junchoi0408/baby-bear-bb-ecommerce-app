@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './ProductLink.css';
 
-const ProductLink = ({ product }) => {
+const ProductLink = ({ product, handleAddToCart }) => {
     const [slider, setSlider] = useState(false);
-    console.log(product)
+    const [variantData, setVariantData] = useState({});
+
+    const handleChange = e => {
+        const { name, value } = e.target
+        variantData[name] = value;
+        console.log(variantData);
+    }
 
     return (
         <>
@@ -27,10 +33,11 @@ const ProductLink = ({ product }) => {
                                     <span>{variant.name}</span>
                                     <div className="radio-toolbar">
                                         { variant.options.map((option, index) => {
+                                            if (index===0)  variantData[variant.id] = option.id
                                             return (
-                                                <>
-                                                    <input type="radio" id={`radio${option.name}`} name={`radio${variant.name}`} value={`${option.name}`} defaultChecked={index === 0}/>
-                                                    <label for={`radio${option.name}`}>{option.name}</label>
+                                                <>               
+                                                    <input type="radio" id={`${option.id}`} name={`${variant.id}`} value={`${option.id}`} onClick={handleChange} defaultChecked={index === 0}/>
+                                                    <label for={`${option.id}`}>{option.name}</label>              
                                                 </>
                                             )
                                         }
@@ -41,8 +48,8 @@ const ProductLink = ({ product }) => {
                             )
                         })}
 
-                        <button className="btn__addToCart">ADD TO CART</button>
-                        <button className="btn__buyItNow">BUY IT NOW</button>
+                        <button type="button" className="btn__addToCart" onClick={() => handleAddToCart(product.id, 1, variantData)}>ADD TO CART</button>
+                        <button type="button" className="btn__buyItNow">BUY IT NOW</button>
                     </form>
                     
                     <div className="product__description" dangerouslySetInnerHTML={{ __html: product.description }}>
@@ -51,7 +58,7 @@ const ProductLink = ({ product }) => {
                 </div>
             </div>
             <div className="productlink__recommendation__container" style={{textAlign: 'center'}}>
-                    <h2>You may also like</h2>
+                <h2>You may also like</h2>
             </div>
         </>
     )
