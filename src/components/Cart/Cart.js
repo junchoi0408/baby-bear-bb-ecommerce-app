@@ -5,7 +5,6 @@ import CartItem from './CartItem/CartItem';
 import './Cart.css';
 
 const Cart = ({ handleUpdateCartQty, handleEmptyCart, cart, handleRemoveFromCart }) => {
-    // console.log(cart);
 
     const emptyCart = () => {
         return (
@@ -32,8 +31,8 @@ const Cart = ({ handleUpdateCartQty, handleEmptyCart, cart, handleRemoveFromCart
                     </div>
                     
                     {
-                        cart.line_items.map((item)=>(
-                            <CartItem handleUpdateCartQty={handleUpdateCartQty} item={item} handleRemoveFromCart={handleRemoveFromCart}/>))   
+                        cart.line_items.map((item, index)=>(
+                            <CartItem key={index} handleUpdateCartQty={handleUpdateCartQty} item={item} handleRemoveFromCart={handleRemoveFromCart}/>))   
                     }
 
                     <div className="subtotal__container">          
@@ -46,7 +45,7 @@ const Cart = ({ handleUpdateCartQty, handleEmptyCart, cart, handleRemoveFromCart
                             <span style={{fontFamily: 'Arapey, serif', marginBottom: '1em'}}>Tax included. <a style={{color: '#FFB7C5', textDecoration: 'underline'}}>Shipping</a> calculated at checkout.</span>
                             <div className="cart__button__container">
                                 <button className="update__button" onClick={handleEmptyCart}>EMPTY CART</button>
-                                <button className="checkout__button">CHECK OUT</button>
+                                <button className="checkout__button"><Link to="/checkout">CHECK OUT</Link></button>
                             </div>
                         </div>
                     </div>

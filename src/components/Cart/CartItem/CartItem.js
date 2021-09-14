@@ -22,7 +22,7 @@ const CartItem = ({ item, handleRemoveFromCart, handleUpdateCartQty }) => {
                 <div className="cart__product__description">
                     <h4>{item.name}</h4>
                     <span>{item.selected_options[0].option_name} / {item.selected_options[1].option_name}</span>
-                    <p style={{cursor: 'pointer'}} onClick={() => handleRemoveFromCart(item.id)}>Remove</p>
+                    <p style={{cursor: 'pointer'}} onClick={() => handleUpdateCartQty(item.id, quantity, variantData)}>Update</p>
                 </div>
 
             </div>

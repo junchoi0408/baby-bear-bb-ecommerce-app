@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { firebaseConfig } from './firebase';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import './App.css';
+import { commerce } from './lib/commerce';
 import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import { Navbar, Home, Products, News, Auth, ProductLink, Cart, Profile } from './components';
-import { commerce } from './commerce';
+import { Navbar, Home, Products, News, Auth, ProductLink, Cart, Profile, Checkout } from './components';
 import { CircularProgress } from '@material-ui/core'
+import './App.css';
 
 function App() {
     const [firebaseApp, setFirebaseApp] = useState();
@@ -17,6 +17,8 @@ function App() {
     const [product, setProduct] = useState({});
     const [cart, setCart] = useState({});
     const [variant, setVariant] = useState({})
+    const [order, setOrder] = useState({});
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         init();
@@ -92,6 +94,21 @@ function App() {
         setIsLoading(false);
     }
 
+    const refreshCart = async () => {
+        const newCart = await commerce.cart.refresh();
+        setCart(newCart);
+    }
+
+    const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
+        try { 
+            console.log(newOrder)
+            const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
+            setOrder(incomingOrder);
+            refreshCart();
+        } catch (error) {
+            setErrorMessage(error.data.error.message)
+        }
+    }
 
     return (
       <>
@@ -109,8 +126,15 @@ function App() {
                         <News />
                     </Route>
                     <Router exact path="/cart">
-                        <Cart handleUpdateCartQty={handleUpdateCartQty} handleEmptyCart={handleEmptyCart} cart={cart} handleRemoveFromCart={handleRemoveFromCart}/>
+                        <Cart handleUpdateCartQty={handleUpdateCartQty} handleEmptyCart={handleEmptyCart} cart={cart} handleRemoveFromCart={handleRemoveFromCart} />
                     </Router>
+                    <Route exact path="/checkout">
+                        <Checkout 
+                            cart={cart} 
+                            order={order}
+                            onCaptureCheckout={handleCaptureCheckout}
+                            error={errorMessage}/>
+                    </Route>
                     {  isLoggedIn ?  
                     <Router exact path="/profile">
                         <Profile />
@@ -118,7 +142,8 @@ function App() {
                     :
                     <Route exact path="/auth">
                         <Auth />
-                    </Route>}
+                    </Route>
+                    }
                     <Router exact path={`/${productLink}`}>
                         <ProductLink product={product} handleAddToCart={handleAddToCart}/> 
                     </Router>

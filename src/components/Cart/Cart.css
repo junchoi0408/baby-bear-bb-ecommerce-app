@@ -114,6 +114,15 @@
     margin-left: 6em;
 }
 
+.MuiStepIcon-root.MuiStepIcon-active, .MuiStepIcon-root.MuiStepIcon-completed {
+    color: #ffdbe9 !important;
+}
+
+.MuiButton-containedPrimary {
+    color: #000;
+    background-color: #ffdbe9 !important;
+}
+
 @media screen and (min-width: 768px) {
     .cart__top {
         display: flex;
