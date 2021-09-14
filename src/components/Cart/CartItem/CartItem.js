@@ -31,7 +31,6 @@ const CartItem = ({ item, handleRemoveFromCart, handleUpdateCartQty }) => {
                     <input id="quantity" type="number" value={quantity} onChange={handleChange} style={{marginRight:'3em', width: '80px', height: '43px', textAlign: 'center', fontSize: '16px', fontWeight: 600}}/>
                     <span style={{marginLeft: '3em'}}>{item.line_total.formatted_with_symbol}</span>
                 </form>
-                
             </div>
         </div>
     )

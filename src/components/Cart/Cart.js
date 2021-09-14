@@ -1,5 +1,5 @@
-import React from 'react';
-import { Typography, CircularProgress } from '@material-ui/core'
+import React, { useEffect } from 'react';
+import { Typography } from '@material-ui/core'
 import { Link } from 'react-router-dom';
 import CartItem from './CartItem/CartItem';
 import './Cart.css';

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Grid } from '@material-ui/core';
 import Product from './Product/Product'
 import './Products.css';
 
@@ -9,14 +10,17 @@ const Products = ({ products, handleProductLinkClick, getProduct }) => {
                 <span style={{fontSize: '30px'}}>Products</span>
             </div>
             <hr className="hr--small"/>
-            <div> 
-                {
-                    products.map((product)=>{
-                        return <Product key={product.id} getProduct={getProduct} product={product} handleProductLinkClick={handleProductLinkClick}/>
-                    })
-                }
-
-            </div>
+            <div className="grid__container">
+                <Grid container justifyContent="center" alignContent="center" spacing={0}>
+                    {
+                        products.map((product)=>(
+                            <Grid item key={product.id} xs={24} sm={12} md={6} lg={4}>
+                                <Product key={product.id} getProduct={getProduct} product={product} handleProductLinkClick={handleProductLinkClick}/>
+                            </Grid>
+                        ))
+                    }
+                </Grid>
+            </div>       
         </>
     )
 }

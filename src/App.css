@@ -4,3 +4,7 @@
     align-items: center;
     padding-bottom: 30px;
 }
+
+.MuiCircularProgress-colorPrimary {
+    color: #ffb7c5 !important;
+}

@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
 import BannerImg from '../../assets/baby-white-tuxedo.jpg';
 
-const Home = () => {
+const Home = ({ ProductLink, products, handleAddToCart, getProduct }) => {
+    const [home, setHome] = useState(true);
+    const [product, setProduct] = useState({})
+
+    useEffect(()=> {
+        if (Object(products).length > 0) {
+            setProduct(products[0])
+        }
+    }, [])
+
     return (
         <>
             <div className="banner__slide">
@@ -16,28 +25,7 @@ const Home = () => {
                 </div>
                 <div>
                     <h2>Featured collections</h2>
-                    <img src="" className="product" alt="product image" />
-                    <h1>Baby Romper Bodysuit</h1>
-                    <span>$22.99</span>
-                    <div>Tax included. <a>Shipping</a> calculated at checkout.</div>
-                    <span>Colors</span>
-                    <div>
-                        <button>WHITE</button>
-                        <button>PINK</button>
-                        <button>GREY</button>
-                        <button>BROWN</button>
-                    </div>
-                    <span>Size</span>
-                    <div>
-                        <button>0-3 MONTHS</button>
-                        <button>3-6 MONTHS</button>
-                        <button>6-9 MONTHS</button>
-                        <button>9-12 MONTHS</button>
-                    </div>
-                    <div>
-                        <button>ADD TO CART</button>
-                        <button>BUY IY NOW</button>
-                    </div>
+                        {/* <ProductLink products={products} item={product} handleAddToCart={handleAddToCart} home={home}/> */}
                     <a>Full details</a>
                 </div>
             </div>
