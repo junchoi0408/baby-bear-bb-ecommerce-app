@@ -79,6 +79,13 @@
     width: 315px;
 }
 
+.productLink__img__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
 @media screen and (min-width: 768px) {
     .productLink {
         display: flex;

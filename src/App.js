@@ -34,8 +34,10 @@ function App() {
     }, [])
 
     useEffect(()=>{
+        setIsLoading(true);
         fetchProducts();
         fetchCart();
+        setIsLoading(false);
     },[])
 
     const init = async () => {
@@ -52,8 +54,10 @@ function App() {
     }
 
     const fetchProducts = async () => {
+        setIsLoading(true);
         const { data } = await commerce.products.list();
         setProducts(data);
+        setIsLoading(false);
     }
   
     const fetchCart = async () => {
@@ -122,6 +126,15 @@ function App() {
                     <Route exact path="/products">
                         <Products products={products} getProduct={getProduct} handleProductLinkClick={handleProductLinkClick}/>
                     </Route>
+                    { !isLoading && products.length > 0 ?
+                       <Route path={`/products/:productId`}>
+                            <ProductLink products={products} item={product} handleAddToCart={handleAddToCart}/>
+                        </Route>
+                        :
+                        <div style={{display: 'flex',justifyContent:'center', alignItems:'center', height: '100vh'}}>
+                            <CircularProgress />
+                        </div>
+                    }
                     <Route exact path="/news">
                         <News />
                     </Route>
@@ -135,7 +148,7 @@ function App() {
                             onCaptureCheckout={handleCaptureCheckout}
                             error={errorMessage}/>
                     </Route>
-                    {  isLoggedIn ?  
+                    { isLoggedIn ?  
                     <Router exact path="/profile">
                         <Profile />
                     </Router>
@@ -144,10 +157,6 @@ function App() {
                         <Auth />
                     </Route>
                     }
-                    <Router exact path={`/${productLink}`}>
-                        <ProductLink product={product} handleAddToCart={handleAddToCart}/> 
-                    </Router>
-                    <Redirect from={`${productLink}`} to="/products" />
                 </Switch>
                 <footer className="footer__container">
                     <div>

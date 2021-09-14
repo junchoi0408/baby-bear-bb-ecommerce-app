@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import './Product.css';
 
 const Product = ({ product, handleProductLinkClick, getProduct }) => {
+
     return (
         <>
         { product ?    
             <div className="product__container">
                 <Link onClick={() => {
-                    handleProductLinkClick(`products/${product.name.split(' ').join('-')}`)
                     getProduct(product)
                 }
-                } to={`products/${product.name.split(' ').join('-')}`} exact path>
+                } to={`products/${product.id}`} exact path>
                     <div className="product__img">
                         <img src={product.media.source} alt={product.name} />
                     </div>
