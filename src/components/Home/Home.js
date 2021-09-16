@@ -16,17 +16,22 @@ const Home = ({ products, variant, handleAddToCart }) => {
         <>
             <div className="banner__slide">
                 <img src={BannerImg} alt="home page pic" className="banner__img"/>
+                <div className="hero__banner">
+                    <span className="hero__subtitle">AN INTRODUCTORY</span>
+                    <h2 className="hero__title">Hero Banner</h2>
+                </div>   
             </div>
             <div className="home__container">
-                <div className="introductory__container">
-                    <span>AN INTRODUCTORY</span>
-                    <h2>Hero Banner</h2>
-                    <p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>
-                </div>
+                <p className="home__description">Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>
+                
                 <div>
-                    <h2>Featured collections</h2>
+                    <div style={{marginBottom: '1.5em'}}>
+                        <h2 className="featured__title">Featured collections</h2>
+                        <hr className="hr--small"/>
+                    </div>
+                    
                     <div className="productLink">
-                        <div className="productLink__img__container">
+                        <div className="productHome__img__container">
                             <img src={products[0].assets[0].url} alt={products[0].name} />
                         </div>
                         <div className="productLink__container">
@@ -63,7 +68,6 @@ const Home = ({ products, variant, handleAddToCart }) => {
                             <Link to={`products/${product.id}`}>Full details</Link>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </>

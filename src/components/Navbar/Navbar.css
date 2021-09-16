@@ -31,7 +31,7 @@
 }
 
 .nav__show {
-    display:none
+    display:none;
 }
 
 .icon__container {
@@ -63,6 +63,7 @@
     color: #ffff;
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 
 .nav__menu li {
