@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import BannerImg from '../../assets/baby-white-tuxedo.jpg';
+import { gsap } from 'gsap';
 
 const Home = ({ products, variant, handleAddToCart }) => {
     const [product, setProducts] = useState(products[0])
@@ -11,6 +12,11 @@ const Home = ({ products, variant, handleAddToCart }) => {
         const { name, value } = e.target
         variantData[name] = value;
     }
+
+    useEffect(()=>{
+        gsap.from('.hero__subtitle', {opacity: 0, duration: 1, delay: 1, y:10})
+        gsap.from('.hero__title', {opacity: 0, duration: 1, delay: 1.1, y:10})
+    }, [])
 
     return (
         <>

@@ -80,22 +80,26 @@
 }
 
 .productLink__img__container {
-    display: flex;
     flex-direction: column;
     justify-content: center;
+    display: none;
 }
 
-
 @media screen and (min-width: 768px) {
+    .slider {
+        display: none;
+    }
+
     .productLink {
         display: flex;
         justify-content: center;
-        padding: 2em;
+        padding: 0 2em;
     }
     
     .productLink__img__container {
         max-width: 565px;
         margin-top: 2em;
+        display: flex;
     }
 
     .productLink__img__container img {

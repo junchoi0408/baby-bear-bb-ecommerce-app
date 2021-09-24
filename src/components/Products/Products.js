@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { gsap } from 'gsap';
 import { Grid } from '@material-ui/core';
 import Product from './Product/Product'
 import './Products.css';
 
 const Products = ({ products, handleProductLinkClick, getProduct }) => {
+    
+    useEffect(()=>{
+        gsap.from('.grid__container', {opacity: 0, duration: 1, delay: 1, y:10})
+    }, [])
+    
     return (
         <>
             <div className="page__container">

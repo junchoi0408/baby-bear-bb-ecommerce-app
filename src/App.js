@@ -5,7 +5,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { commerce } from './lib/commerce';
 import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { Navbar, Home, Products, News, Auth, ProductLink, Cart, Profile, Checkout } from './components';
-import { CircularProgress } from '@material-ui/core'
+import { CircularProgress } from '@material-ui/core';
 import './App.css';
 
 function App() {
@@ -105,7 +105,6 @@ function App() {
 
     const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
         try { 
-            console.log(newOrder)
             const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
             setOrder(incomingOrder);
             refreshCart();
