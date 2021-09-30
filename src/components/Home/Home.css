@@ -5,6 +5,21 @@
     object-position: 50% 15%;
 }
 
+.shop__btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    font-size: 0.8125em;
+    background-color: #000;
+    color: #fff;
+    margin-top: 1em;
+    width: 131.36px;
+    margin: auto;
+}
+
 .productHome__img__container {
     display: flex;
     flex-direction: column;
@@ -66,7 +81,6 @@
     .banner__slide { 
         position: relative;
         text-align: center;
-        color: white;
     }
 
     .hero__banner {

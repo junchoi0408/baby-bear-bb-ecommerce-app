@@ -8,3 +8,39 @@
 .MuiCircularProgress-colorPrimary {
     color: #ffb7c5 !important;
 }
+
+.popUp__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    z-index: 100;
+}
+
+.popUp {
+    z-index: 100;
+    position: fixed;
+    background-color: #fff;
+    display: flex;
+    /* justify-content:center; */
+    align-items: center;
+    flex-direction: column;
+    width: 40vw;
+    height: 40vh;
+    box-shadow: 1px 1px 3px 5px rgba(0,0,0,0.2);
+    border-radius: 2%;
+    padding: 1em 2em;
+}
+
+.popUp p {
+    margin: 0 2em;
+}
+
+.popUp__close {
+    align-self: flex-end;
+    margin-bottom: 10em;
+    cursor: pointer;
+}

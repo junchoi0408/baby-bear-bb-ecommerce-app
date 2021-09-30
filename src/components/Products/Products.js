@@ -15,7 +15,7 @@ const Products = ({ products, handleProductLinkClick, getProduct }) => {
             <div className="page__container">
                 <span style={{fontSize: '30px'}}>Products</span>
             </div>
-            <hr className="hr--small"/>
+            <hr className="hr--small" style={{marginBottom: '2em'}}/>
             <div className="grid__container">
                 <Grid container justifyContent="center" alignContent="center" spacing={0}>
                     {

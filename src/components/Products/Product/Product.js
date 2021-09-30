@@ -6,7 +6,6 @@ const Product = ({ product, handleProductLinkClick, getProduct }) => {
 
     return (
         <>
-        { product ?    
             <div className="product__container">
                 <Link onClick={() => {
                     getProduct(product)
@@ -18,11 +17,6 @@ const Product = ({ product, handleProductLinkClick, getProduct }) => {
                 </Link>          
                 <span style={{width: '345px', textAlign: 'center'}}>{product.name} - <b style={{ fontSize: '14px', fontFamily: 'Montserrat, sans-seriif', letterSpacing: '0.1em'}}>{product.price.formatted_with_symbol}</b></span>
             </div>
-            : 
-            <div>
-                Loading...
-            </div>
-            }
         </>
     )
 }

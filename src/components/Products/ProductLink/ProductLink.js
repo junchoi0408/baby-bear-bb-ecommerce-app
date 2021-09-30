@@ -101,11 +101,7 @@ const ProductLink = ({ products, getProduct, item, handleAddToCart }) => {
                                 
                             </div>
                         </div>
-                    </div>
-                    <div className="productlink__recommendation__container" style={{textAlign: 'center'}}>
-                        <h2>You may also like</h2>
-                    </div>
-                    
+                    </div>        
                 </>
             }
         </>

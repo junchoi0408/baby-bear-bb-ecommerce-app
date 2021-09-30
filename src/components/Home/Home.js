@@ -15,7 +15,8 @@ const Home = ({ products, variant, handleAddToCart }) => {
 
     useEffect(()=>{
         gsap.from('.hero__subtitle', {opacity: 0, duration: 1, delay: 1, y:10})
-        gsap.from('.hero__title', {opacity: 0, duration: 1, delay: 1.1, y:10})
+        gsap.from('.hero__title', {opacity: 0, duration: 1, delay: 1, y:10})
+        gsap.from('.shop__btn', {opacity: 0, duration: 1, delay: 1, y:10})
     }, [])
 
     return (
@@ -23,8 +24,9 @@ const Home = ({ products, variant, handleAddToCart }) => {
             <div className="banner__slide">
                 <img src={BannerImg} alt="home page pic" className="banner__img"/>
                 <div className="hero__banner">
-                    <span className="hero__subtitle">AN INTRODUCTORY</span>
-                    <h2 className="hero__title">Hero Banner</h2>
+                    <span className="hero__subtitle">2021 FALL SEASON</span>
+                    <h2 className="hero__title">BABY BEAR BB</h2>
+                    <Link to="/products"><p className="shop__btn">SHOP NOW</p></Link>
                 </div>   
             </div>
             <div className="home__container">

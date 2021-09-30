@@ -3,7 +3,6 @@ import { Card, makeStyles } from '@material-ui/core';
 import './Slider.css';
 
 const Slider = ({ content }) => {
-    console.log(content)
 
     const useStyles = makeStyles(() => ({
         card: {
