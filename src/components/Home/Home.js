@@ -30,7 +30,7 @@ const Home = ({ products, variant, handleAddToCart }) => {
                 </div>   
             </div>
             <div className="home__container">
-                <p className="home__description">Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>
+                <p className="home__description">Shop at Babybear BB for cute, comfortable, high quality clothes for your baby!</p>
                 
                 <div>
                     <div style={{marginBottom: '1.5em'}}>

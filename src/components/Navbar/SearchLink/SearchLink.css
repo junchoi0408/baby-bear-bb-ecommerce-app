@@ -1,15 +1,5 @@
-.footer__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 30px;
-}
 
-.MuiCircularProgress-colorPrimary {
-    color: #ffb7c5 !important;
-}
-
-.popUp__container {
+.searchLink__container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,11 +10,12 @@
     z-index: 100;
 }
 
-.popUp {
+.searchLink {
     z-index: 100;
     position: fixed;
     background-color: #fff;
     display: flex;
+    /* justify-content:center; */
     align-items: center;
     flex-direction: column;
     width: 40vw;
@@ -34,7 +25,7 @@
     padding: 1em 2em;
 }
 
-.popUp p {
+.searchLink p {
     margin: 0 2em;
 }
 
@@ -44,23 +35,19 @@
     cursor: pointer;
 }
 
-.popup__message__container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
 
 @media screen and (max-width: 1024px) {
-    .popUp {
-        font-size: 14px;
+    .searchLink {
         width: 60vw;
-        margin-bottom: 5em;
     }
 
+    .popUp__close {
+        margin-bottom: 5em;
+    }
 }
 
 @media screen and (max-width: 376px) {
     .popUp__close {
-        margin-bottom: 2em;
+        margin-bottom: 3em;
     } 
 }

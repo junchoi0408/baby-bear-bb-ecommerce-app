@@ -6,7 +6,7 @@ import { commerce } from './lib/commerce';
 import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { Navbar, Home, Products, News, Auth, ProductLink, Cart, Profile, Checkout } from './components';
 import { CircularProgress } from '@material-ui/core';
-import { IoIosClose } from 'react-icons/io'
+import { IoIosClose } from 'react-icons/io';
 import './App.css';
 
 function App() {
@@ -40,7 +40,6 @@ function App() {
         fetchProducts();
         fetchCart();
         setIsLoading(false);
-        console.log(products)
     },[])
 
     const init = async () => {
@@ -117,7 +116,7 @@ function App() {
     }
 
     const handleClose = () => {
-        setClose(close=>!close)
+        setClose(close => !close)
     }
 
     return (
@@ -126,9 +125,12 @@ function App() {
             <div className="popUp__container">
                 <div className="popUp">
                     <IoIosClose className="popUp__close" size={32} onClick={handleClose}/>
-                    <h3>We are still in the development phase.</h3><br/>
-                    <h3>Please do not use real credit card.</h3><br/>
-                    <p>We are sorry for the incovience.</p>
+                    <div className="popup__message__container">
+                        <h3>We are still in the development phase.</h3><br/>
+                        <h3>Please do not use real credit card number.</h3><br/>
+                        <p>We are sorry for the incovience.</p>
+                    </div>
+                    
                 </div>
             </div>
         }
