@@ -27,7 +27,7 @@ const ProductLink = ({ products, getProduct, item, handleAddToCart }) => {
             setContent(SLIDE_INFO[index])
             setNumSlides(SLIDE_INFO.length)
         }
-    })
+    }, [])
 
     const Arrow = (props) => {
         const { direction, clickFunction } = props;

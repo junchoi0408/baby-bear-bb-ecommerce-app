@@ -18,36 +18,21 @@
     /* justify-content:center; */
     align-items: center;
     flex-direction: column;
-    width: 40vw;
-    height: 40vh;
+    width: 80vw;
+    max-width: 1000px;
     box-shadow: 1px 1px 3px 5px rgba(0,0,0,0.2);
     border-radius: 2%;
     padding: 1em 2em;
+    padding-bottom: 4em;
 }
 
 .searchLink p {
     margin: 0 2em;
 }
 
-.popUp__close {
+.searchLink__close {
     align-self: flex-end;
-    margin-bottom: 10em;
+    margin-bottom: 2em;
     cursor: pointer;
 }
 
-
-@media screen and (max-width: 1024px) {
-    .searchLink {
-        width: 60vw;
-    }
-
-    .popUp__close {
-        margin-bottom: 5em;
-    }
-}
-
-@media screen and (max-width: 376px) {
-    .popUp__close {
-        margin-bottom: 3em;
-    } 
-}

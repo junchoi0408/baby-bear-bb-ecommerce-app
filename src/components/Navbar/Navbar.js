@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import SearchLink from './SearchLink/SearchLink';
 import './Navbar.css';
 
-const Nav = ({ isLoggedIn, totalItems }) => {
+const Nav = ({ isLoggedIn, totalItems, handleSearch, searchProducts }) => {
     const location = useLocation();
 
     const [toggle, setToggle] = useState(false);
@@ -27,7 +27,7 @@ const Nav = ({ isLoggedIn, totalItems }) => {
     return (
         <>
             {
-                display && <SearchLink display={display} getDisplay={getDisplay}/>
+                display && <SearchLink display={display} getDisplay={getDisplay} handleSearch={handleSearch} searchProducts={searchProducts}/>
             }
             <header>
                 { location.pathname === '/' &&

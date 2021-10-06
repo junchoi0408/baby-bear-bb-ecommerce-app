@@ -21,6 +21,7 @@ function App() {
     const [order, setOrder] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
     const [close, setClose] = useState(true);
+    const [searchProducts, setSearchProducts] = useState([]);
 
     useEffect(() => {
         init();
@@ -59,6 +60,7 @@ function App() {
         setIsLoading(true);
         const { data } = await commerce.products.list();
         setProducts(data);
+        setSearchProducts(data);
         setIsLoading(false);
     }
   
@@ -119,6 +121,12 @@ function App() {
         setClose(close => !close)
     }
 
+    const handleSearch = (event) => {
+        const {target: { value }} = event;
+        const filteredProducts = products.filter(product=>product.name.toLowerCase().includes(value.toLowerCase()));
+        setSearchProducts(filteredProducts);
+    }
+
     return (
       <>
         { close && 
@@ -137,7 +145,7 @@ function App() {
         
         {  !isLoading && init ? 
             <Router>
-                <Navbar isLoggedIn={isLoggedIn} totalItems={cart.total_items}/>
+                <Navbar isLoggedIn={isLoggedIn} totalItems={cart.total_items} handleSearch={handleSearch} searchProducts={searchProducts}/>
                 <Switch>
                     { !isLoading && products.length > 0 ?
                         <Route exact path="/">

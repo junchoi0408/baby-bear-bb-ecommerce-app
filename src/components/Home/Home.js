@@ -57,7 +57,7 @@ const Home = ({ products, variant, handleAddToCart }) => {
                                                     if (index===0)  variantData[variant.id] = option.id
                                                     return (
                                                         <>               
-                                                            <input type="radio" id={`${option.id}`} name={`${variant.id}`} value={`${option.id}`} onClick={handleChange} defaultChecked={index === 0}/>
+                                                            <input key={index} type="radio" id={`${option.id}`} name={`${variant.id}`} value={`${option.id}`} onClick={handleChange} defaultChecked={index === 0}/>
                                                             <label for={`${option.id}`}>{option.name}</label>              
                                                         </>
                                                     )
