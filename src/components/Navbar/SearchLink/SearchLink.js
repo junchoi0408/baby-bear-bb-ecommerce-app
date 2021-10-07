@@ -73,8 +73,9 @@ const SearchLink = ({ display, getDisplay, handleSearch, searchProducts }) => {
                 
                 <div className="popup__message__container">
                     { searchProducts.map((product,index) => {
+                        console.log(product.id)
                         return (
-                            <Link to={`products/${product.id}`} onClick={() => getDisplay(!display)}><p key={index} style={{marginBottom: '0.5em'}} exact path>{product.name}</p></Link>
+                            <Link to={`/products/${product.id}`} onClick={() => getDisplay(!display)} exact path><p key={index} style={{marginBottom: '0.5em'}} >{product.name}</p></Link>
                         )
                     })}
          

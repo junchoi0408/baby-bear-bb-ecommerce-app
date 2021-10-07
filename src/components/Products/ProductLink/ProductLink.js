@@ -20,14 +20,16 @@ const ProductLink = ({ products, getProduct, item, handleAddToCart }) => {
     }
 
     useEffect(()=> {
-        if (Object.keys(item).length === 0 || products.length > 0) {
+        if (Object.keys(item).length !== 0 || products.length > 0) {
+            setProduct(item)
             const prod = (products.find(product => product.id === productId))
-            setProduct(prod)    
+            console.log(prod)
+            setProduct(prod) 
             setSLIDE_INFO(prod.assets)
             setContent(SLIDE_INFO[index])
             setNumSlides(SLIDE_INFO.length)
         }
-    }, [])
+    })
 
     const Arrow = (props) => {
         const { direction, clickFunction } = props;
@@ -44,7 +46,7 @@ const ProductLink = ({ products, getProduct, item, handleAddToCart }) => {
 
     return (
         <>
-            { Object.keys(product).length > 0 &&
+            { product &&
                 <>
                     <div className="productLink">
                         

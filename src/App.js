@@ -159,10 +159,10 @@ function App() {
                     <Route exact path="/products">
                         <Products products={products} getProduct={getProduct} handleProductLinkClick={handleProductLinkClick}/>
                     </Route>
-                    { !isLoading && products.length > 0 ?
-                            <Route path={`/products/:productId`}>
-                                <ProductLink products={products} item={product} handleAddToCart={handleAddToCart}/>
-                            </Route>
+                    { !isLoading && products ?
+                        <Route path={`/products/:productId`}>
+                            <ProductLink products={products} item={product} handleAddToCart={handleAddToCart}/>
+                        </Route>
                         :
                         <div style={{display: 'flex',justifyContent:'center', alignItems:'center', height: '100vh'}}>
                             <CircularProgress />
