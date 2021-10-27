@@ -46,7 +46,7 @@ const Nav = ({ isLoggedIn, totalItems, handleSearch, searchProducts }) => {
                         <li className="nav__news"><Link to='/news' className="nav__item nav__show">News</Link></li>
                         <ul className="icon__container">
                             <li className="nav__person">
-                                <IconButton component={Link} to={!isLoggedIn ? "/auth" : "/profile"} aria-label="Show profile" color="inherit">
+                                <IconButton component={Link} to="/profile" aria-label="Show profile" color="inherit">
                                     <Person className="nav__item nav__show"/>
                                 </IconButton>
                             </li>     
@@ -72,8 +72,8 @@ const Nav = ({ isLoggedIn, totalItems, handleSearch, searchProducts }) => {
                     <li className="nav__news__menu" onClick={handleMenuClick}><Link to='/news'>News</Link></li>
                 {   !isLoggedIn ? 
                     <>
-                        <li className="nav__login" onClick={handleMenuClick}><Link to='/auth'>Log in</Link></li>
-                        <li className="nav__create" onClick={handleMenuClick}><Link to='/auth'>Create Account</Link></li>
+                        <li className="nav__login" onClick={handleMenuClick}><Link to='/profile'>Log in</Link></li>
+                        <li className="nav__create" onClick={handleMenuClick}><Link to='/profile'>Create Account</Link></li>
                     </>
                     :
                     <li className="nav__login" onClick={handleMenuClick}><Link to='/profile'>Profile</Link></li>
