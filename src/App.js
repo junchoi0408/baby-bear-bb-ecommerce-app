@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { firebaseConfig } from './firebase';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore"
 import { commerce } from './lib/commerce';
-import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { Navbar, Home, Products, News, Auth, ProductLink, Cart, Profile, Checkout } from './components';
 import { CircularProgress } from '@material-ui/core';
 import { IoIosClose } from 'react-icons/io';
 import './App.css';
 
 function App() {
-    const [firebaseApp, setFirebaseApp] = useState();
+    const [firebaseApp, setFirebaseApp] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [products, setProducts] = useState([]);
@@ -22,10 +23,23 @@ function App() {
     const [errorMessage, setErrorMessage] = useState('');
     const [close, setClose] = useState(true);
     const [searchProducts, setSearchProducts] = useState([]);
+    const [db, setDb] = useState({});
+    const [auth, setAuth] = useState({});
 
     useEffect(() => {
         init();
-        const auth = getAuth(firebaseApp);
+    }, [])
+
+    useEffect(()=>{
+        fetchProducts();
+        fetchCart();
+    },[])
+
+    const init = async () => {
+        const firebase = await initializeApp(firebaseConfig);
+        setFirebaseApp(firebase);
+        const auth = await getAuth(firebase);
+        setAuth(auth);
         onAuthStateChanged(auth, user => {
             if(user){
                 setIsLoggedIn(true);
@@ -33,19 +47,12 @@ function App() {
                 setIsLoggedIn(false);
             }
         })
+        if (isLoggedIn) {
+            
+        }
+        const dbService = await getFirestore(firebase);
+        setDb(dbService);
         setIsLoading(false);
-    }, [])
-
-    useEffect(()=>{
-        setIsLoading(true);
-        fetchProducts();
-        fetchCart();
-        setIsLoading(false);
-    },[])
-
-    const init = async () => {
-        const firebase = await initializeApp(firebaseConfig);
-        setFirebaseApp(firebase);
     }
 
     const getProduct = (product) => {
@@ -111,6 +118,20 @@ function App() {
         try { 
             const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
             setOrder(incomingOrder);
+            console.log(new Date().toLocaleDateString());
+            if (isLoggedIn) {
+                try {
+                    const docRef = await addDoc(collection(db, auth.currentUser.uid), {
+                        orderId: incomingOrder.customer_reference,
+                        orderDate: new Date().toLocaleDateString(),
+                        orderPrice: incomingOrder.order_value.formatted_with_symbol,
+                    });
+    
+                    console.log("Document written with ID: ", docRef.id);
+                } catch (e) {
+                    console.error("Error adding document: ", e);
+                }
+            }
             refreshCart();
         } catch (error) {
             setErrorMessage(error.data.error.message)
@@ -181,9 +202,9 @@ function App() {
                             onCaptureCheckout={handleCaptureCheckout}
                             error={errorMessage}/>
                     </Route>
-                    { isLoggedIn ?  
+                    { isLoggedIn && firebaseApp !== null ?  
                     <Router exact path="/profile">
-                        <Profile />
+                        <Profile firebase={firebaseApp} auth={auth} db={db} getDocs={getDocs} collection={collection}/>
                     </Router>
                     :
                     <Route exact path="/auth">

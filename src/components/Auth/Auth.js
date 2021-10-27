@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { getAuth, signInWithRedirect, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
 import './Auth.css';
 import { TextField } from "@material-ui/core"
 import { FcGoogle } from "react-icons/fc";
@@ -39,7 +39,6 @@ const Auth = () => {
             } else {
                 data = await signInWithEmailAndPassword(auth, email, password)
             }
-            console.log(data)
             history.push('/')
         } catch (error) {
             setError(error.message)

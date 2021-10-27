@@ -29,10 +29,10 @@
     flex-direction: column;
     width: 80vw;
     max-width: 1000px;
-    height: 40vh;
     box-shadow: 1px 1px 3px 5px rgba(0,0,0,0.2);
     border-radius: 2%;
     padding: 1em 2em;
+    padding-bottom: 4em;
 }
 
 .popUp p {
@@ -41,7 +41,7 @@
 
 .popUp__close {
     align-self: flex-end;
-    margin-bottom: 10em;
+    margin-bottom: 1em;
     cursor: pointer;
 }
 
@@ -51,7 +51,9 @@
     flex-direction: column;
 }
 
-
+.CardField {
+    z-index: 100 !important;
+}
 
 @media screen and (max-width: 1024px) {
     .popUp {
@@ -61,8 +63,12 @@
 
 }
 
-@media screen and (max-width: 376px) {
+@media screen and (min-width: 376px) {
     .popUp__close {
         margin-bottom: 2em;
     } 
+
+    .popUp {
+        max-width: 800px;
+    }
 }

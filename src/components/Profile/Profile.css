@@ -1,0 +1,13 @@
+.history__container {
+    width: 315px;
+    margin: auto;
+}
+
+.history__items {
+    margin-bottom: 2em;
+    
+}
+
+.history__item {
+    margin-bottom: 0.5em;
+}
