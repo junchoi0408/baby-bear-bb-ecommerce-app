@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/baby-bear-bb-ecommerce-app/static/css/main.5d44abc6.chunk.css",
-    "main.js": "/baby-bear-bb-ecommerce-app/static/js/main.15304733.chunk.js",
-    "main.js.map": "/baby-bear-bb-ecommerce-app/static/js/main.15304733.chunk.js.map",
+    "main.js": "/baby-bear-bb-ecommerce-app/static/js/main.a7c07ba1.chunk.js",
+    "main.js.map": "/baby-bear-bb-ecommerce-app/static/js/main.a7c07ba1.chunk.js.map",
     "runtime-main.js": "/baby-bear-bb-ecommerce-app/static/js/runtime-main.9fa5c057.js",
     "runtime-main.js.map": "/baby-bear-bb-ecommerce-app/static/js/runtime-main.9fa5c057.js.map",
     "static/js/2.6c1b2a5c.chunk.js": "/baby-bear-bb-ecommerce-app/static/js/2.6c1b2a5c.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.9fa5c057.js",
     "static/js/2.6c1b2a5c.chunk.js",
     "static/css/main.5d44abc6.chunk.css",
-    "static/js/main.15304733.chunk.js"
+    "static/js/main.a7c07ba1.chunk.js"
   ]
 }
