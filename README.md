@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+<div id="top"></div>
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- ABOUT THE PROJECT -->
+## About The Project
+[![baby-bear-ecommerce-web-app][ecommerce-screenshot]](https://junchoi0408.github.io/baby-bear-bb-ecommerce-app/) 
 
-## Available Scripts
+The Baby Bear BB Ecommerce App is an E-commerce app that provides high quality, comfortable, and adorable baby clothes. The project began with reducing costs and adding more flexibility to the existing E-commerce website powered by shopify. 
 
-In the project directory, you can run:
+Benefits of developing new E-commerce app:
+* There are monthly costs to using prebuilt E-commerce websites using shopify or square. The cost is much higher than using a self-developed website and only paying for what you need! 
+* Besides expenses, developing the E-commerce web app provides more flexibility when adding new features. 
 
-### `npm start`
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+### Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* [React.js](https://reactjs.org/)
+* [Commerce.js](https://commercejs.com/)
+* [Firebase-Authentication](https://firebase.google.com/)
+* [Firebase-Database](https://firebase.google.com/)
+* [Stripe.js](https://stripe.com/)
+* [GreenSock-gsap](https://greensock.com/gsap/)
 
-### `npm run build`
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- CONTACT -->
+## Contact
 
-### `npm run eject`
+Junwon Choi - [@LinkedIn](https://www.linkedin.com/in/junchoi0408/) - junchoi0408@gmail.com
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Project Link: [https://github.com/junchoi0408/baby-bear-bb-ecommerce-app](https://github.com/junchoi0408/baby-bear-bb-ecommerce-app)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Please see following resources you might be able to use!
+* [Material UI](https://mui.com/)
+* [GitHub Pages](https://pages.github.com)
+* [React Icons](https://react-icons.github.io/react-icons/search)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[ecommerce-screenshot]: baby-bear-ecommerce.PNG
