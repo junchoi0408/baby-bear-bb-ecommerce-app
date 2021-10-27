@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, signInWithPopup, signInWithRedirect } from "firebase/auth";
 import './Auth.css';
 import { TextField } from "@material-ui/core"
 import { FcGoogle } from "react-icons/fc";
@@ -61,7 +61,7 @@ const Auth = () => {
         else if(name === "github") {
             provider = new GithubAuthProvider();
         }
-        await signInWithPopup(auth, provider).then(res=>{
+        await signInWithRedirect(auth, provider).then(res=>{
             history.push("/")
         }).catch(err=>{
             console.log(error)

@@ -207,7 +207,7 @@ function App() {
                         <Profile firebase={firebaseApp} auth={auth} db={db} getDocs={getDocs} collection={collection}/>
                     </Router>
                     :
-                    <Route exact path="/auth">
+                    <Route exact path="/profile">
                         <Auth />
                     </Route>
                     }
